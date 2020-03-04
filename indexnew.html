@@ -1,0 +1,182 @@
+<html>
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <base href="https://www.codebee.co.th/invoicemaker/">
+    <meta http-equiv="content-language" content="th">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-5HW7CS"></script>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/invoicemaker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+        crossorigin="anonymous"></script>
+
+    <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <title>Simple Hello Vue.js Application</title>
+</head>
+
+<body>
+    <div class="margin">
+        <div class="header">
+            <h3>ใบเสร็จรับเงิน</h3>
+        </div>
+    <div align="center">
+    <img src="https://www.img.in.th/images/e99f153da327c406b1428a9e3c4076bc.jpg" width="25%" height="25%"><p>บริษัท อะคูสติก ซอฟต์ จำกัด</p>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-md-4 mb-3">
+            <form id="frm1" style="margin-left: 50px;">
+               ข้อมูลของลูกค้า <textarea rows="4"  class="form-control" placeholder="โปรดกรอกชื่อ/Email/เบอร์โทร/ที่อยู่" id="costumerID"></textarea><br>
+                </form>
+            </div>
+            <form id="frm2" class="col-md-3 offset-md-4" style="margin-right: 50px;">
+                เลขที่เอกสาร: <input type="text" class="form-control" id="NumberID"><br>
+                วันที่เอกสาร:  <input type="date" class="form-control" id="Date"><br>
+            </form>
+        </div>
+        <!--col-md-4 offset-md-4 ใช้ปรับขนาดแล้วเว้นระยะ -->
+        <form>
+            <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+              <div class="col-1">
+                ลำดับ
+                <input type="number" class="form-control" min="1" id="num">
+              </div>
+              <div class="col">
+                รหัส
+                <input type="text" class="form-control" id="code">
+              </div>
+              <div class="col-5">
+                ชื่อรายการ
+                <input type="text" class="form-control" id="menu">
+              </div>
+              <div class="col-1">
+                จำนวน
+                <input type="number" class="form-control" min="1" id="sum" >
+              </div>
+              <div class="col">
+                ราคา
+                <input type="number" class="form-control" min="1" id="price">
+              </div>
+            </div>
+
+              <!--<div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 20% ;">
+                <div class="col">
+                    <div class="emty"></div>
+                </div>
+                <div class="col-2" style="margin-top: 1%;">
+                  <input type="number" class="form-control" placeholder="จำนวนรวม" id="sn">
+                </div>
+                <div class="col-2" style="margin-top: 1%;">
+                    <input type="number" class="form-control" min="1" placeholder="ราคารวม" id="sp">
+                  </div>
+              </div>-->
+          </form>
+
+          <!--<div class="row justify-content-around">
+            <div class="col-4">
+                <h5>-----------------------------------</h5>
+                <h5>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</h5>
+                <h5>ผู้มีอำนาจอนุมัติ</h5>
+            </div>
+            <div class="col-4">
+                <h5>-----------------------------------</h5>
+                <h5>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</h5>
+                <h5>เจ้าหน้าที่ผู้เสนอราคา</h5>
+            </div>
+          </div>-->
+          <div style="margin-left: 50px; margin-right: 50px; margin-bottom: 5% ; margin-top: 5%;" class="col-3">
+            <select class="custom-select" id="pay">
+              <option selected>วิธีการชำระเงิน</option>
+              <option value="เงินสด">เงินสด</option>
+              <option value="เงินโอน">โอนเงิน</option>
+              <option value="check">check</option>
+            </select>
+          </div>
+          <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 10% ; margin-top: 5%;">
+            <div class="col">
+              ผู้มีอำนาจอนุมัติ
+              <input type="text" class="form-control" id="nameceo">
+            </div>
+            <div class="col">
+                จัดเตรียมโดย
+                <input type="text" class="form-control" id="namepp">
+              </div>
+              <div class="col">
+                ตรวจสอบโดย
+                <input type="text" class="form-control" id="namecheck">
+              </div>
+            <div class="col">
+              ผู้รับเงิน
+              <input type="text" class="form-control" id="namepayee">
+            </div>
+        </div> 
+        </div>
+     <button type="submit" class="btn btn-primary" style="margin-bottom: 10%;" id="btn">Submit</button>
+
+<div id="app-test">
+  <p>{{info}}</p>
+</div>
+
+</html>
+<script>
+    new Vue({
+        el: '#app-test',
+        data() {
+            return {
+                info: []
+            }
+        },
+        mounted() {
+            axios
+                .get('http://localhost:3000/nat')
+                .then(response => {
+                    this.info = response.data
+                    console.log(this.info)
+                })
+
+        }
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+</script>
+<style>
+    .header{  background-color: #F1F1F1;
+text-align: center;
+padding: 20px;
+border: 1px solid black;
+margin: 1%;
+}
+.margin{
+margin-left: 5%;
+margin-right: 5%;
+border: 1px solid black;
+margin-bottom: 5%;
+}
+.mm{
+margin-left: 40px;
+margin-right: 50px;
+}
+.emty{
+background-color: gray;
+padding: 20px;
+border: 1px solid black;
+margin-right: 5%;
+margin-top: 1% ;
+}
+  </style>

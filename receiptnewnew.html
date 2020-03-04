@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="layout.css">-->
+    <title>ใบเสร็จรับเงิน AcusticSoft</title>
+  </head>
+
+  <body>
+    
+    <div class="margin">
+        <div class="header">
+            <h3>ใบเสร็จรับเงิน</h3>
+        </div>
+    <div align="center">
+    <img src="https://www.img.in.th/images/e99f153da327c406b1428a9e3c4076bc.jpg" width="25%" height="25%"><p>บริษัท อะคูสติก ซอฟต์ จำกัด</p>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-md-4 mb-3">
+            <form id="frm1" style="margin-left: 50px;">
+               ข้อมูลของลูกค้า <textarea rows="4"  class="form-control" placeholder="โปรดกรอกชื่อ/Email/เบอร์โทร/ที่อยู่" id="costumerID"></textarea><br>
+                </form>
+            </div>
+            <form id="frm2" class="col-md-3 offset-md-4" style="margin-right: 50px;">
+                เลขที่เอกสาร: <input type="text" class="form-control" id="NumberID"><br>
+                วันที่เอกสาร:  <input type="date" class="form-control" id="Date"><br>
+            </form>
+        </div>
+        <!--col-md-4 offset-md-4 ใช้ปรับขนาดแล้วเว้นระยะ -->
+        <form>
+            <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+              <div class="col-1">
+                ลำดับ
+                <input type="number" class="form-control" min="1" id="num">
+              </div>
+              <div class="col">
+                รหัส
+                <input type="text" class="form-control" id="code">
+              </div>
+              <div class="col-5">
+                ชื่อรายการ
+                <input type="text" class="form-control" id="menu">
+              </div>
+              <div class="col-1">
+                จำนวน
+                <input type="number" class="form-control" min="1" id="sum" >
+              </div>
+              <div class="col">
+                ยอดคงค้าง
+                <input type="number" class="form-control" min="1" id="out" onchange="newMoey()">
+              </div>
+              <div class="col">
+                ราคา
+                <input type="number" class="form-control" min="1" id="price" onchange="newMoey()">
+              </div>
+            </div>
+            <form>
+              <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+                <div class="col-1">
+                  
+                  <input type="number" class="form-control" min="1" id="num2">
+                </div>
+                <div class="col">
+                  
+                  <input type="text" class="form-control" id="code2">
+                </div>
+                <div class="col-5">
+                  
+                  <input type="text" class="form-control" id="menu2">
+                </div>
+                <div class="col-1">
+                 
+                  <input type="number" class="form-control" min="1" id="sum2" >
+                </div>
+                <div class="col">
+                  
+                  <input type="number" class="form-control" min="1" id="out2" onchange="newMoey()">
+                </div>
+                <div class="col">
+
+                  <input type="number" class="form-control" min="1" id="price2" onchange="newMoey()">
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+                <div class="col-1">
+                  
+          <input type="number" class="form-control" min="1" id="num3">
+                </div>
+                <div class="col">
+                 
+                  <input type="text" class="form-control" id="code3">
+                </div>
+                <div class="col-5">
+                  
+                  <input type="text" class="form-control" id="menu3">
+                </div>
+                <div class="col-1">
+                  
+                  <input type="number" class="form-control" min="1" id="sum3" >
+                </div>
+                <div class="col">
+
+                  <input type="number" class="form-control" min="1" id="out3" onchange="newMoey()" >
+                </div>
+                <div class="col">
+                
+                  <input type="number" class="form-control" min="1" id="price3" onchange="newMoey()" >
+                </div>
+              </div>
+            </form>
+              <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+                <div class="col">
+                    <div class=""></div>
+                </div>
+                <div class="col-2" style="margin-top: 1%;">
+                  <input type="number" class="form-control" placeholder="ยอดคงค้างรวม" id="outAll" disabled >
+                </div>
+                <div class="col-2" style="margin-top: 1%;">
+                    <input type="number" class="form-control" min="1" placeholder="ราคารวม" id="priceAll" disabled >
+                  </div>
+              </div>
+              <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+                <div class="col">
+                    <div class=""></div>
+                </div>
+                <div class="col-2" style="margin-top: 1%;">
+                  <input type="number" class="form-control" placeholder="ยอดรวม" id="total" onchange="newMoney()" disabled >
+                </div>
+              </div>
+          </form>
+          <div style="margin-left: 50px; margin-right: 50px; margin-bottom: 2% ; margin-top: 2%;" class="col-3">
+            <select class="custom-select" id="pay">
+              <option selected>วิธีการชำระเงิน</option>
+              <option value="เงินสด">เงินสด</option>
+              <option value="เงินโอน">โอนเงิน</option>
+              <option value="check">check</option>
+            </select>
+          </div>
+          <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 10% ; margin-top: 5%;">
+            <div class="col">
+              ผู้มีอำนาจอนุมัติ
+              <input type="text" class="form-control" id="nameceo">
+            </div>
+            <div class="col">
+                จัดเตรียมโดย
+                <input type="text" class="form-control" id="namepp">
+              </div>
+              <div class="col">
+                ตรวจสอบโดย
+                <input type="text" class="form-control" id="namecheck">
+              </div>
+            <div class="col">
+              ผู้รับเงิน
+              <input type="text" class="form-control" id="namepayee">
+            </div>
+        </div> 
+        </div>
+     <button type="submit" class="btn btn-primary" style="margin-bottom: 10%;" id="btn">Submit</button>
+
+
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+    <script>
+function newMoey(){
+var x = document.getElementById("price").value;
+var y = document.getElementById("price2").value;
+var z = document.getElementById("price3").value;
+
+var s = parseInt(x) + parseInt(y) + parseInt(z);
+document.getElementById("priceAll").value=s;
+
+var a = document.getElementById("out").value;
+var b = document.getElementById("out2").value;
+var c = document.getElementById("out3").value;
+
+var d = parseInt(a) + parseInt(b) + parseInt(c);
+document.getElementById("outAll").value=d;
+
+var t = s-d;
+document.getElementById("total").value=t;
+}
+
+    document.getElementById("btn").addEventListener('click',doStuff);
+
+      function doStuff(){
+      
+      var userI = {};
+      
+      userI.costumerID = document.getElementById("costumerID").value;
+      
+      userI.NumberID = document.getElementById("NumberID").value;
+      
+      userI.Date = document.getElementById("Date").value;
+      
+      userI.num = document.getElementById("num").value;
+      
+      userI.code = document.getElementById("code").value;
+      
+      userI.menu = document.getElementById("menu").value;
+      
+      userI.sum = document.getElementById("sum").value;
+
+      userI.out = document.getElementById("out").value;
+      
+      userI.price = document.getElementById("price2").value;
+
+      userI.num2 = document.getElementById("num2").value;
+      
+      userI.code2 = document.getElementById("code2").value;
+      
+      userI.menu2 = document.getElementById("menu2").value;
+      
+      userI.sum2 = document.getElementById("sum2").value;
+
+      userI.out2 = document.getElementById("out2").value;
+      
+      userI.price2 = document.getElementById("price2").value;
+
+      userI.num3 = document.getElementById("num3").value;
+      
+      userI.code3 = document.getElementById("code3").value;
+      
+      userI.menu3 = document.getElementById("menu3").value;
+      
+      userI.sum3 = document.getElementById("sum3").value;
+
+      userI.out3 = document.getElementById("out3").value;
+      
+      userI.price3 = document.getElementById("price3").value;
+
+      userI.priceAll = document.getElementById("priceAll").value;
+
+      userI.outAll = document.getElementById("outAll").value;
+      
+      userI.total = document.getElementById("total").value;
+
+      userI.pay = document.getElementById("pay").value;
+      
+      userI.nameceo = document.getElementById("nameceo").value;
+      
+      userI.namepp = document.getElementById("namepp").value;
+      
+      userI.namecheck = document.getElementById("namecheck").value;
+      
+      userI.namepayee = document.getElementById("namepayee").value;
+      
+      //google.script.run.userClicked(userI);
+      
+      document.getElementById("costumerID").value = "";
+      
+      document.getElementById("NumberID").value = "";
+      
+      document.getElementById("Date").value = "";
+      
+      document.getElementById("num").value = "";
+      
+      document.getElementById("code").value = "";
+      
+      document.getElementById("menu").value = "";
+      
+      document.getElementById("sum").value = "";
+
+      document.getElementById("out").value = "";
+      
+      document.getElementById("price").value = "";
+
+      document.getElementById("num2").value = "";
+      
+      document.getElementById("code2").value = "";
+      
+      document.getElementById("menu2").value = "";
+      
+      document.getElementById("sum2").value = "";
+
+      document.getElementById("out2").value = "";
+      
+      document.getElementById("price2").value = "";
+
+      document.getElementById("num3").value = "";
+      
+      document.getElementById("code3").value = "";
+      
+      document.getElementById("menu3").value = "";
+      
+      document.getElementById("sum3").value = "";
+
+      document.getElementById("out3").value = "";
+      
+      document.getElementById("price3").value = "";
+
+      document.getElementById("priceAll").value ="";
+
+      document.getElementById("outAll").value = "";
+
+      document.getElementById("total").value = "";
+      
+      document.getElementById("pay").value = "";
+      
+      document.getElementById("nameceo").value = "";
+      
+      document.getElementById("namepp").value = "";
+      
+      document.getElementById("namecheck").value = "";
+      
+      document.getElementById("namepayee").value = "";
+      
+      console.log(userI);
+      }
+      
+      </script>
+
+      <style>
+        .header{  background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 1%;
+  }
+.margin{
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid black;
+    margin-bottom: 5%;
+  }
+.mm{
+    margin-left: 40px;
+    margin-right: 50px;
+}
+.emty{
+    background-color: gray;
+    padding: 20px;
+    border: 1px solid black;
+    margin-right: 5%;
+    margin-top: 1% ;
+}
+      </style>
+  </body>
+</html>

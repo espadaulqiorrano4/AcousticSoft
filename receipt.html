@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="layout.css">-->
+    <title>ใบเสร็จรับเงิน AcusticSoft</title>
+  </head>
+
+  <body>
+    
+    <div class="margin">
+        <div class="header">
+            <h3>ใบเสร็จรับเงิน</h3>
+        </div>
+    <div align="center">
+    <img src="https://www.img.in.th/images/e99f153da327c406b1428a9e3c4076bc.jpg" width="25%" height="25%"><p>บริษัท อะคูสติก ซอฟต์ จำกัด</p>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-md-4 mb-3">
+            <form id="frm1" style="margin-left: 50px;">
+               ข้อมูลของลูกค้า <textarea rows="4"  class="form-control" placeholder="โปรดกรอกชื่อ/Email/เบอร์โทร/ที่อยู่" id="costumerID"></textarea><br>
+                </form>
+            </div>
+            <form id="frm2" class="col-md-3 offset-md-4" style="margin-right: 50px;">
+                เลขที่เอกสาร: <input type="text" class="form-control" id="NumberID"><br>
+                วันที่เอกสาร:  <input type="date" class="form-control" id="Date"><br>
+            </form>
+        </div>
+        <!--col-md-4 offset-md-4 ใช้ปรับขนาดแล้วเว้นระยะ -->
+        <form>
+            <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 1% ;">
+              <div class="col-1">
+                ลำดับ
+                <input type="number" class="form-control" min="1" id="num">
+              </div>
+              <div class="col">
+                รหัส
+                <input type="text" class="form-control" id="code">
+              </div>
+              <div class="col-5">
+                ชื่อรายการ
+                <input type="text" class="form-control" id="menu">
+              </div>
+              <div class="col-1">
+                จำนวน
+                <input type="number" class="form-control" min="1" id="sum" >
+              </div>
+              <div class="col">
+                ราคา
+                <input type="number" class="form-control" min="1" id="price">
+              </div>
+            </div>
+
+          </form>
+
+          <div style="margin-left: 50px; margin-right: 50px; margin-bottom: 5% ; margin-top: 5%;" class="col-3">
+            <select class="custom-select" id="pay">
+              <option selected>วิธีการชำระเงิน</option>
+              <option value="เงินสด">เงินสด</option>
+              <option value="เงินโอน">โอนเงิน</option>
+              <option value="check">check</option>
+            </select>
+          </div>
+          <div class="form-row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 10% ; margin-top: 5%;">
+            <div class="col">
+              ผู้มีอำนาจอนุมัติ
+              <input type="text" class="form-control" id="nameceo">
+            </div>
+            <div class="col">
+                จัดเตรียมโดย
+                <input type="text" class="form-control" id="namepp">
+              </div>
+              <div class="col">
+                ตรวจสอบโดย
+                <input type="text" class="form-control" id="namecheck">
+              </div>
+            <div class="col">
+              ผู้รับเงิน
+              <input type="text" class="form-control" id="namepayee">
+            </div>
+        </div> 
+        </div>
+     <button type="submit" class="btn btn-primary" style="margin-bottom: 10%;" id="btn">Submit</button>
+     
+     </body>
+
+      <style>
+        .header{  background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 1%;
+  }
+.margin{
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid black;
+    margin-bottom: 5%;
+  }
+.mm{
+    margin-left: 40px;
+    margin-right: 50px;
+}
+.emty{
+    background-color: gray;
+    padding: 20px;
+    border: 1px solid black;
+    margin-right: 5%;
+    margin-top: 1% ;
+}
+      </style>
+  
+</html>
